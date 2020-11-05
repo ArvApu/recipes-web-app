@@ -1,18 +1,43 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <button @click="api()"> TEST API </button>
+    <button @click="login()"> LOGIN </button>
+    
+    <br>
+    <br>
+    <br>
+    <br>
+    {{ this.user }}
+
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import AuthService from '@/services/auth.service.js'
+import axios from 'axios';
 
 export default {
   name: 'Home',
-  components: {
-    HelloWorld
+  data() {
+    return {
+      user: {},
+    };
+  },
+  methods: {
+    login() {
+      AuthService.login();
+    },
+    api() {
+      axios.get('http://localhost:8001/user', {
+        headers: {
+          Authorization: 'Bearer ' + sessionStorage.getItem('access_token')
+        }
+      }).then((response) => {
+        this.user = response.data; 
+        console.log(this.user);
+      })
+    }
   }
 }
 </script>
