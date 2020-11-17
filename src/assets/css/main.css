@@ -19,6 +19,48 @@
     font-style: italic;
 }
 
-body {
+* {
+    overflow-x: hidden;
+    box-sizing: border-box;
+}
+
+:root {
+    --main-bg-color: #fae3d9;
+    --primary-color: #61c0bf;
+    --secondary-color: #ffb6b9;
+    --help-color: #61c0bf;
+}
+
+html, body, #app {
     font-family: "B612", sans-serif;
+    height: 100%;
+    min-height: 100%;
+    margin:0;
+}
+
+body, #app{
+    display: flex;
+    flex-direction: column;
+}
+
+#header {
+    height: 70px;
+    background-color:#61c0bf;
+    flex: none;
+}
+
+#content {
+    background-color:#fae3d9;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    flex: auto;
+    padding-right: 17px;
+    width: 100%;
+    box-sizing: content-box;
+}
+
+#footer {
+    height: 100px;
+    background-color:#ffb6b9;
+    flex: none;
 }
