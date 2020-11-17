@@ -9,6 +9,8 @@
     <br>
     {{ this.user }}
 
+    SOME FAKING TEXT
+
   </div>
 </template>
 

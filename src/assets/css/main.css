@@ -1,0 +1,24 @@
+@font-face {
+    font-family: "B612";
+    src: url("../fonts/B612-Regular.ttf");
+}
+@font-face {
+    font-family: "B612";
+    src: url("../fonts/B612-Bold.ttf");
+    font-weight: bold;
+}
+@font-face {
+    font-family: "B612";
+    src: url("../fonts/B612-Italic.ttf");
+    font-style: italic;
+}
+@font-face {
+    font-family: "B612";
+    src: url("../fonts/B612-BoldItalic.ttf");
+    font-weight: bold;
+    font-style: italic;
+}
+
+body {
+    font-family: "B612", sans-serif;
+}
