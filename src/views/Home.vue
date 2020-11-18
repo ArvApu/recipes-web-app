@@ -15,7 +15,6 @@
 <script>
 // @ is an alias to /src
 import AuthService from '@/services/auth.service.js'
-import axios from 'axios';
 
 export default {
   name: 'Home',
@@ -28,15 +27,8 @@ export default {
     login() {
       AuthService.login();
     },
-    api() {
-      axios.get('http://localhost:8001/user', {
-        headers: {
-          Authorization: 'Bearer ' + sessionStorage.getItem('access_token')
-        }
-      }).then((response) => {
-        this.user = response.data; 
-        console.log(this.user);
-      })
+    async api() {
+      this.user = await AuthService.getUser();
     }
   }
 }

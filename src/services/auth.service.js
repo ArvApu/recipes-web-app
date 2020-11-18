@@ -8,6 +8,7 @@ class AuthService {
   static TOKEN_URI         = process.env.VUE_APP_AUTH_SERVER_BASE_URL + '/api/token';
   static REDIRECT_URI      = process.env.VUE_APP_BASE_URL + '/auth/callback';
   static CLIENT_ID         = process.env.VUE_APP_CLIENT_ID;
+  static USER_ENDPOINT     = process.env.VUE_APP_API_URL + '/user';
 
   async login() {
     const codePair = create();
@@ -30,8 +31,6 @@ class AuthService {
   }
 
   async getToken() {
-    console.log(AuthService.AUTHORIZATION_URI, AuthService.TOKEN_URI, AuthService.REDIRECT_URI, AuthService.CLIENT_ID);
-
     const params = new URLSearchParams(window.location.search);
     
     if(!params.has('code') && !params.has('state')) {
@@ -65,6 +64,21 @@ class AuthService {
       return Promise.reject(error);
     }
   }
+
+  async getUser() {
+    try {
+        const response = await axios.get(`${AuthService.USER_ENDPOINT}`, {
+          headers: {
+            Authorization: 'Bearer ' + SessionService.getAccessToken()
+          }
+        });
+        
+        return Promise.resolve(response.data)
+      } catch(error) {
+        return Promise.reject(error);
+      }
+  }
 }
+
 
 export default new AuthService();

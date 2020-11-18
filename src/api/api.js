@@ -4,7 +4,7 @@ import router from '@/router';
 import { extractErrors } from '@/utils/helpers'
 
 const api = axios.create({
-  baseURL: process.env.VUE_APP_URL,
+  baseURL: process.env.VUE_API_URL,
   headers: {
     "Content-Type": "application/json",
   }
