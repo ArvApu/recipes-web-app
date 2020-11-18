@@ -3,8 +3,7 @@
     <header id="header"> LINKS HERE  </header>
 
     <div id="content">
-      CONTENT HERE
-      <!-- <router-view/> -->
+      <router-view/>
     </div>
 
     <footer id="footer"> META INFO HERE  </footer>
