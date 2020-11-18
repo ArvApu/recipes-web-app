@@ -1,6 +1,5 @@
 <template>
     <ul>
-
         <li>
           <router-link :to="{ path: 'feed' }" exact-active-class="side-panel-exact-active" > Feed </router-link>
         </li>

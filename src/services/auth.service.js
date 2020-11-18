@@ -59,7 +59,7 @@ class AuthService {
       SessionService.setAccessToken(response.data.access_token);
       SessionService.setRefreshToken(response.data.refresh_token);
       
-      return Promise.resolve(response.data)
+      return Promise.resolve(response.data);
     } catch(error) {
       return Promise.reject(error);
     }
@@ -73,12 +73,11 @@ class AuthService {
           }
         });
         
-        return Promise.resolve(response.data)
+        return Promise.resolve(response.data);
       } catch(error) {
         return Promise.reject(error);
       }
   }
 }
-
 
 export default new AuthService();
