@@ -1,14 +1,51 @@
 <template>
   <div id="app">
-    <header id="header"> LINKS HERE  </header>
 
-    <div id="content">
-      <router-view/>
+    <!-- HEADER -->
+    <header id="header">     
+      <button @click="login()"> LOGIN </button>
+      LOGOUT
+    </header>
+
+    <!-- MAIN -->
+    <div id="main">
+
+      <nav id="menu">
+        <ul>
+          <NavLinks/>
+        </ul>
+      </nav>
+
+      <div id="content">
+        <router-view/>
+      </div>
+      
     </div>
 
-    <footer id="footer"> META INFO HERE  </footer>
+    <!-- FOOTER -->
+    <footer id="footer"> 
+      META INFO HERE  
+    </footer>
   </div>
 </template>
+
+<script>
+// @ is an alias to /src
+import AuthService from '@/services/auth.service.js'
+import NavLinks from '@/components/NavLinks.vue'
+
+export default {
+  name: 'App',
+  components: {
+    NavLinks,
+  },
+  methods: {
+    login() {
+      AuthService.login();
+    }
+  }
+}
+</script>
 
 <style>
   @import './assets/css/main.css';

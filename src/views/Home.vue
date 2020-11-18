@@ -1,10 +1,6 @@
 <template>
   <div class="home">
     <button @click="api()"> TEST API </button>
-    <button @click="login()"> LOGIN </button>
-    
-    <br>
-    <br>
     <br>
     <br>
     {{ this.user }}

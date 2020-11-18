@@ -1,3 +1,4 @@
+/* --------------- Fonts ---------------- */
 @font-face {
     font-family: "B612";
     src: url("../fonts/B612-Regular.ttf");
@@ -19,6 +20,8 @@
     font-style: italic;
 }
 
+/* --------------- Global ---------------- */
+
 * {
     overflow-x: hidden;
     box-sizing: border-box;
@@ -28,7 +31,7 @@
     --main-bg-color: #fae3d9;
     --primary-color: #61c0bf;
     --secondary-color: #ffb6b9;
-    --help-color: #61c0bf;
+    --help-color: #bbded6;
 }
 
 html, body, #app {
@@ -43,24 +46,52 @@ body, #app{
     flex-direction: column;
 }
 
+/* --------------- 3 Main root elements ---------------- */
+
 #header {
-    height: 70px;
+    height: 50px;
     background-color:#61c0bf;
     flex: none;
 }
 
-#content {
+#main {
     background-color:#fae3d9;
-    overflow-y: scroll;
-    -webkit-overflow-scrolling: touch;
     flex: auto;
-    padding-right: 17px;
     width: 100%;
-    box-sizing: content-box;
+    display: flex;
+    flex-direction: row;
 }
 
 #footer {
     height: 100px;
     background-color:#ffb6b9;
     flex: none;
+}
+
+/* --------------- Main element elements ---------------- */
+
+#menu {
+    background-color:#bbded6;
+    height: 100%;
+    width: 15%;
+}
+
+#content {
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+    padding: 20px 25px;
+}
+
+/* --------------- Scrollbar hides with fucntinality keep ---------------- */
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+#content::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+#example {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
 }
