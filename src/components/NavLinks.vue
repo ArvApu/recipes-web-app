@@ -7,6 +7,9 @@
           <router-link :to="{ path: 'users' }" exact-active-class="side-panel-exact-active" > Users </router-link>
         </li>
         <li>
+          <router-link :to="{ path: 'recipes-create' }" exact-active-class="side-panel-exact-active" > Add Recipe </router-link>
+        </li>
+        <li>
           <router-link :to="{ path: 'recipes' }" exact-active-class="side-panel-exact-active" > My Recipes </router-link>
         </li>
         <li>

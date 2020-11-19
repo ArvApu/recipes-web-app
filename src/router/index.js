@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import Feed from '../views/Feed.vue'
 import Recipes from '../views/Recipes.vue'
 import Comments from '../views/Comments.vue'
+import RecipesCreate from '../views/RecipesCreate.vue'
 
 Vue.use(VueRouter)
 
@@ -27,6 +28,11 @@ const routes = [
     path: '/recipes',
     name: 'Recipes',
     component: Recipes
+  },
+  {
+    path: '/recipes-create',
+    name: 'RecipesCreate',
+    component: RecipesCreate
   },
   {
     path: '/auth/callback',
