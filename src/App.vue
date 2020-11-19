@@ -29,7 +29,17 @@
 
     <!-- FOOTER -->
     <footer id="footer"> 
-      Copyright and link to github
+      
+      <div> 
+        <a class='icon-link' href="https://github.com/ArvApu/recipes-app"><img src="@/assets/github.svg"></a>
+        <a class='icon-link' href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"><img src="@/assets/yt.svg"></a>
+      </div>
+
+      <div class="copyright">	
+        <img src="@/assets/copyright-symbol.svg">
+        <span class="copyright-text" >All rights reserved to OhMyRecipes&reg;</span>
+      </div>
+
     </footer>
   </div>
 </template>

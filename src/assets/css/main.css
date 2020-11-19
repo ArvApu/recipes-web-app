@@ -65,10 +65,14 @@ body, #app{
 }
 
 #footer {
-    height: 100px;
+    height: 70px;
     background-color:#bbded6;
     flex: none;
     padding: 10px 15px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
 }
 
 /* --------------- Main element elements ---------------- */
@@ -132,6 +136,24 @@ body, #app{
     background-color: #ffb6b9
 }
 
+/* --------------- Footer elements --------------- */
+
+#footer .copyright {
+    display:flex;
+    align-items:center;
+
+}
+
+#footer .copyright-text {
+    line-height:20px;
+    margin-left: 5px;
+    padding-top: 3.3px;
+    font-weight: bold
+}
+
+#footer .icon-link {
+    margin: 5px;
+}
 /* --------------- Buttons elements --------------- */
 
 .btn {
