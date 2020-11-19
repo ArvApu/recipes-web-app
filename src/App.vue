@@ -4,16 +4,14 @@
     <!-- HEADER -->
     <header id="header">     
       <button @click="login()"> LOGIN </button>
-      LOGOUT
+      <button @click="login()"> LOGOUT </button>
     </header>
 
     <!-- MAIN -->
     <div id="main">
 
       <nav id="menu">
-        <ul>
-          <NavLinks/>
-        </ul>
+        <NavLinks/>
       </nav>
 
       <div id="content">

@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Feed from '../views/Feed.vue'
 import Recipes from '../views/Recipes.vue'
+import Comments from '../views/Comments.vue'
 
 Vue.use(VueRouter)
 
@@ -16,6 +17,11 @@ const routes = [
     path: '/feed',
     name: 'Feed',
     component: Feed
+  },
+  {
+    path: '/comments',
+    name: 'Comments',
+    component: Comments
   },
   {
     path: '/recipes',

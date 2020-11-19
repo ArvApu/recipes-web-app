@@ -64,14 +64,14 @@ body, #app{
 
 #footer {
     height: 100px;
-    background-color:#ffb6b9;
+    background-color:#bbded6;
     flex: none;
 }
 
 /* --------------- Main element elements ---------------- */
 
 #menu {
-    background-color:#bbded6;
+    background-color:#ffb6b9;
     height: 100%;
     width: 15%;
 }
@@ -96,6 +96,35 @@ body, #app{
   scrollbar-width: none;     /* Firefox */
 }
 
+
+/* --------------- Menu elements --------------- */
+
+#menu a{
+    color: #000000; 
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    padding: 10px 5px;
+}
+
+#menu a:hover{
+    background-color: #61c0bf;
+}
+
+#menu ul{
+    padding: 0;
+    list-style-type: none;
+}
+
+#menu li {
+    margin: 4px 0px;
+    background-color: #bbded6;
+}
+
+#menu .side-panel-exact-active{
+    color: #ffffff;
+    background-color: #61c0bf;
+}
 
 /* --------------- Recipes --------------- */
 
@@ -144,7 +173,7 @@ body, #app{
 
 /* --------------- Responsivnes --------------- */
 
-/* Extra small devices (phones, 600px and down) */
+/* Extra small devices (phones) */
 @media only screen and (max-width: 600px) {
 
     #content {
@@ -165,7 +194,7 @@ body, #app{
     }
 }
 
-/* Small devices (portrait tablets and large phones, 600px and up) */
+/* Small devices (portrait tablets and large phones) */
 @media only screen and (min-width: 600px) and (max-width: 920px){
     #content {
         padding: 0;
@@ -185,7 +214,7 @@ body, #app{
     }
 }
 
-/* Medium devices (landscape tablets, 768px and up) */
+/* Medium devices (landscape tablets) */
 @media only screen and (min-width: 920px) and (max-width: 1200px) {
     #content {
         padding: 0;
@@ -201,7 +230,7 @@ body, #app{
     }
 }
 
-/* Large devices (laptops/desktops, 992px and up) */
+/* Large devices (laptops/desktops) */
 @media only screen and (min-width: 1200px) and (max-width: 1800px){
     .recipe {
         margin: 1rem 1em;
