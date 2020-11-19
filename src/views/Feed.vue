@@ -1,26 +1,15 @@
 <template>
-  <div class="recipes">
-      
-        <div class="recipe" v-for="recipe in this.recipes"  v-bind:key="recipe.id"> 
-        
-            <img class='image' src='https://ciao.lt/wp-content/uploads/2018/12/burger.jpeg' >
-
-            <div class='information'> 
-                <span class='title'> {{ recipe.name }} </span>
-                <div class='meta'>
-                    <span> {{ formatCompat(recipe.created_at) }} </span>  
-                    <span> 60min </span>
-                </div>
-            </div>
-
-        </div>
-  </div>
+    <RecipesList :recipes="this.recipes"/>
 </template>
 
 <script>
+import RecipesList from '@/components/RecipesList.vue'
 
 export default {
-  name: 'Home',
+  name: 'Feed',
+  components: {
+      RecipesList
+  },
   data() {
     return {
       recipes: [
