@@ -140,3 +140,70 @@ body, #app{
     display: flex;
     justify-content: space-between;
 }
+
+
+/* --------------- Responsivnes --------------- */
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+
+    #content {
+        padding: 0;
+    }
+
+    #menu {
+        display: none;
+    }
+
+    #footer {
+        height: 50px;
+    }
+
+    .recipe {
+        margin: 1rem 1.6em;
+        flex: 0 1 90%;  
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) and (max-width: 920px){
+    #content {
+        padding: 0;
+    }
+
+    #menu {
+        display: none;
+    }
+
+    #footer {
+        height: 50px;
+    }
+
+    .recipe {
+        margin: 1rem 0.5em;
+        flex: 0 1 calc(50% - 1em);  
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 920px) and (max-width: 1200px) {
+    #content {
+        padding: 0;
+    }
+
+    #footer {
+        height: 50px;
+    }
+
+    .recipe {
+        margin: 1rem 0.5em;
+        flex: 0 1 calc(50% - 1em);  
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 1200px) and (max-width: 1800px){
+    .recipe {
+        margin: 1rem 1em;
+    }
+}
