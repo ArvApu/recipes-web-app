@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Feed from '../views/Feed.vue'
+import Recipes from '../views/Recipes.vue'
 
 Vue.use(VueRouter)
 
@@ -15,6 +16,11 @@ const routes = [
     path: '/feed',
     name: 'Feed',
     component: Feed
+  },
+  {
+    path: '/recipes',
+    name: 'Recipes',
+    component: Recipes
   },
   {
     path: '/auth/callback',
