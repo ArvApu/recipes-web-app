@@ -2,9 +2,16 @@
   <div id="app">
 
     <!-- HEADER -->
-    <header id="header">     
-      <button @click="login()"> LOGIN </button>
-      <button @click="login()"> LOGOUT </button>
+    <header id="header"> 
+      <div class='logo'>
+          <img class='image' src='@/assets/logo.svg' >
+      </div>  
+
+      <div class='buttons'>
+        <button class='btn' @click="login()"> LOGIN </button>
+        <!-- <button class='btn' @click="login()"> LOGOUT </button> -->
+      </div>
+
     </header>
 
     <!-- MAIN -->

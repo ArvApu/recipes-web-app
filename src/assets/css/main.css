@@ -23,7 +23,7 @@
 /* --------------- Global ---------------- */
 
 * {
-    overflow-x: hidden;
+    overflow: hidden;
     box-sizing: border-box;
 }
 
@@ -49,9 +49,11 @@ body, #app{
 /* --------------- 3 Main root elements ---------------- */
 
 #header {
-    height: 50px;
+    height: 60px;
     background-color:#61c0bf;
     flex: none;
+    display: flex;
+    justify-content: space-between;
 }
 
 #main {
@@ -91,11 +93,82 @@ body, #app{
 }
 
 /* Hide scrollbar for IE, Edge and Firefox */
-#example {
+#content {
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;     /* Firefox */
 }
 
+/* --------------- Header elements --------------- */
+
+#header .image {
+    height: 100%;
+    max-width: 100%;
+}
+
+#header .logo {
+    overflow: hidden;
+    height: 100%;
+    width: 200px;
+    padding-bottom: 10px;
+}
+
+#header .buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    width: 200px;
+}
+
+#header .buttons .btn {
+    background-color: #bbded6;
+    height: 35px;
+    margin: 2px 20px;
+    font-weight: bold;
+}
+
+#header .buttons .btn:hover {
+    background-color: #ffb6b9
+}
+
+/* --------------- Buttons elements --------------- */
+
+.btn {
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  .btn:hover {
+    text-decoration: none;
+  }
+  
+  .btn:focus {
+    outline: none;
+    border-color: black;
+    box-shadow: 0 0 0 3px;
+  }
+  
+  ::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+  }
 
 /* --------------- Menu elements --------------- */
 
