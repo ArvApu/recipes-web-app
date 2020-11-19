@@ -29,7 +29,7 @@
 
     <!-- FOOTER -->
     <footer id="footer"> 
-      META INFO HERE  
+      Copyright and link to github
     </footer>
   </div>
 </template>

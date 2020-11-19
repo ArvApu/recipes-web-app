@@ -68,6 +68,7 @@ body, #app{
     height: 100px;
     background-color:#bbded6;
     flex: none;
+    padding: 10px 15px;
 }
 
 /* --------------- Main element elements ---------------- */
