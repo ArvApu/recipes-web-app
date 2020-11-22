@@ -1,25 +1,28 @@
 <template>
     <div class='recipe-create'>
-        <form id="recipe-form">
-
-            <p>
+        <form id="recipe-form" @submit.prevent="store">
+            <p class='form-group'>
                 <label for="name"> Name </label>
-                <input type="text" id="name" name="name" v-model="name" requried>
+                <input class='form-input' type="text" id="name" name="name" v-model="name" requried>
             </p>
 
-            <p>
+            <p class='form-group'>
                 <label for="description"> Description</label>
-                <textarea id="description" name="description" v-model="description" requried/>
+                <textarea class='form-input-textarea' id="description" name="description" v-model="description" requried/>
             </p>
 
-            <p>
+            <p class='form-group'>
                 <label for="recipe"> Recipe </label>
-                <textarea id="recipe" name="recipe" v-model="recipe" requried/>
+                <textarea class='form-input-textarea' id="recipe" name="recipe" v-model="recipe" requried/>
             </p>
 
-            <p>
-                <label for="duration"> Duration </label>
-                <input type="range" min="10" max="180" value="this.duration" class="slider" id="duration" name="duration" v-model="duration" requried> {{ this.duration }} (minutes)
+            <p class='form-group'>
+                <label for="duration"> Duration {{ this.duration }} (minutes) </label>
+                <input class='form-input slider' type="range" min="10" max="180" value="this.duration" id="duration" name="duration" v-model="duration" requried>
+            </p>
+
+            <p class='form-group'>
+                <input class='form-input btn btn-primary' type="submit" id="add-recipe" name="add-recipe" value="Submit" requried> 
             </p>
 
         </form>
