@@ -3,6 +3,9 @@
 
     <!-- HEADER -->
     <header id="header"> 
+        <Slide id='mobile-menu'>
+          <NavLinks/>
+        </Slide>
       <div class='logo'>
           <img class='image' src='@/assets/logo.svg' >
       </div>  
@@ -48,11 +51,14 @@
 // @ is an alias to /src
 import AuthService from '@/services/auth.service.js'
 import NavLinks from '@/components/NavLinks.vue'
+import { Slide } from 'vue-burger-menu' 
+ 
 
 export default {
   name: 'App',
   components: {
     NavLinks,
+    Slide
   },
   methods: {
     login() {

@@ -203,9 +203,72 @@ body, #app{
     background-color: #007c70;
 }
 
+/* --------------- Mobile menu --------------- */
+
+#mobile-menu {
+    width: 200px;
+    display: none;
+}
+
+#mobile-menu .bm-burger-button {
+    cursor: pointer;
+    height: 30px;
+    left: 25px;
+    position: fixed;
+    top: 15px;
+    width: 36px;
+}
+
+#mobile-menu .bm-menu {
+    background-color: #ffb6b9;
+    height: 100%;
+    left: 0;
+    overflow-x: hidden;
+    padding-top: 60px;
+    position: fixed;
+    top: 0;
+    transition: .5s;
+    width: 0;
+    z-index: 1000;
+}
+
+#mobile-menu .bm-cross {
+    background-color: black;
+    left: 10px;
+}
+
+#mobile-menu .bm-item-list {
+    margin-left: 0px;
+}
+
+#mobile-menu .bm-item-list ul {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    list-style-type: none;
+}
+
+#mobile-menu .bm-item-list ul li {
+    background-color: #bbded6;
+    margin: 4px 0px;
+}
+
+#mobile-menu .bm-item-list ul li a {
+    color: #000000; 
+    display: block;
+    padding: 10px 5px;
+    width: 100%;
+    text-decoration: none;
+}
+
+#mobile-menu .side-panel-exact-active{
+    color: #ffffff !important;
+    background-color: #61c0bf;
+}
+
 /* --------------- Menu elements --------------- */
 
-#menu a{
+#menu a {
     color: #000000; 
     text-decoration: none;
     display: block;
@@ -312,6 +375,14 @@ body, #app{
 /* Extra small devices (phones) */
 @media only screen and (max-width: 600px) {
 
+    #menu {
+        display: none;
+    }
+
+    #mobile-menu {
+        display: block;
+    }
+
     #content {
         padding: 0;
     }
@@ -328,6 +399,23 @@ body, #app{
         margin: 1rem 1.6em;
         flex: 0 1 90%;  
     }
+
+    @media only screen and (max-width: 420px) {
+        #footer {
+            display: none;
+        }
+
+        #mobile-menu .cross-style {
+            cursor: pointer;
+            position: absolute;
+            right: 270px;
+            top: 12px;
+        }
+
+        #header .logo {
+            display: none;
+        }
+    }
 }
 
 /* Small devices (portrait tablets and large phones) */
@@ -338,6 +426,10 @@ body, #app{
 
     #menu {
         display: none;
+    }
+
+    #mobile-menu {
+        display: block;
     }
 
     #footer {
@@ -358,6 +450,14 @@ body, #app{
 
     #footer {
         height: 50px;
+    }
+
+    #menu {
+        display: none;
+    }
+
+    #mobile-menu {
+        display: block;
     }
 
     .recipe {
