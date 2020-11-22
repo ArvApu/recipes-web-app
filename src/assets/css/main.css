@@ -346,6 +346,7 @@ body, #app{
     width: 75%;
     padding: 80px;
 }
+
 .recipe-create .form-input{
     width: 100%;
     padding: 12px 20px;
@@ -368,6 +369,10 @@ body, #app{
 
 .form-group {
     margin: 12px 0;
+}
+
+.slider {
+    padding: 0px !important;
 }
 
 /* --------------- Responsivnes --------------- */
@@ -414,6 +419,12 @@ body, #app{
 
         #header .logo {
             display: none;
+        }
+
+        .recipe-create {
+            margin: auto;
+            width: 75%;
+            padding: 10px 0px;
         }
     }
 }
