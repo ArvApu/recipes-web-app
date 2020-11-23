@@ -420,10 +420,6 @@ body, #app{
 }
 
 #recipe-view .comment {
-    height: 100px;
-}
-
-#recipe-view .comment {
     height: 110px;
     margin-top: 20px;
     border: 1px solid black;
@@ -535,6 +531,27 @@ body, #app{
         padding: 60px 0px;
     }
 
+    #recipe-view .recipe-data {
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+    }
+
+    #recipe-view .image-block {
+        width: 100%;
+        height: auto;
+        margin-bottom: 10px;
+    }
+
+    #recipe-view .content-block {
+        width: 80%;
+        height: auto;
+    }
+
+    #recipe-view .comment {
+        height: 200px;
+    }
+
     @media only screen and (max-width: 420px) {
         #footer {
             display: none;
@@ -550,6 +567,17 @@ body, #app{
         #header .logo {
             display: none;
         }
+
+        #recipe-view .comment {
+            height: 320px;
+        }
+
+        @media only screen and (max-width: 330px) {
+            #recipe-view .comment {
+                height: 420px;
+            }
+        }
+
     }
 }
 
@@ -581,6 +609,27 @@ body, #app{
         width: 75%;
         padding: 80px 0px;
     }
+
+    #recipe-view .recipe-data {
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+    }
+
+    #recipe-view .image-block {
+        width: 100%;
+        height: auto;
+        margin-bottom: 10px;
+    }
+
+    #recipe-view .content-block {
+        width: 90%;
+        height: auto;
+    }
+
+    #recipe-view .comment {
+        height: 150px;
+    }
 }
 
 /* Medium devices (landscape tablets) */
@@ -605,11 +654,29 @@ body, #app{
         margin: 1rem 0.5em;
         flex: 0 1 calc(50% - 1em);  
     }
+
+    #recipe-view .content-block {
+        width: 90%;
+        height: auto;
+    }
+
+    #recipe-view .comment {
+        height: 150px;
+    }
 }
 
 /* Large devices (laptops/desktops) */
 @media only screen and (min-width: 1200px) and (max-width: 1800px){
     .recipe {
         margin: 1rem 1em;
+    }
+
+    #recipe-view .content-block {
+        width: 90%;
+        height: auto;
+    }
+
+    #recipe-view .comment {
+        height: 150px;
     }
 }
