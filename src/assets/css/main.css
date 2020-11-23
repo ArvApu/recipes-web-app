@@ -294,6 +294,9 @@ body, #app{
     display: block;
     width: 100%;
     padding: 10px 5px;
+    -webkit-transition: all ease 0.7s;
+	-moz-transition: all ease 0.7s;
+	transition: all ease 0.7s;
 }
 
 #menu a:hover{
@@ -486,7 +489,7 @@ body, #app{
 /* --------------- Comment creation --------------- */
 
 .comment-create {
-    padding: 5px;
+    padding: 10px;
 }
 
 /* --------------- Recipe edit --------------- */
