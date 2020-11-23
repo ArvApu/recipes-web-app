@@ -450,15 +450,9 @@ body, #app{
     flex-direction: column;
 }
 
-/* --------------- Recipe creation --------------- */
+/* --------------- Form groups --------------- */
 
-.recipe-create {
-    margin: auto;
-    width: 75%;
-    padding: 80px;
-}
-
-.recipe-create .form-input{
+.form-input {
     width: 100%;
     padding: 12px 20px;
     display: inline-block;
@@ -472,9 +466,8 @@ body, #app{
     height: 100px;
     padding: 12px 20px;
     box-sizing: border-box;
-    border: 2px solid #ccc;
+    border: 1px solid #ccc;
     border-radius: 4px;
-    background-color: #f8f8f8;
     resize: none;    
 }
 
@@ -484,6 +477,20 @@ body, #app{
 
 .slider {
     padding: 0px !important;
+}
+
+/* --------------- Recipe creation --------------- */
+
+.recipe-create {
+    margin: auto;
+    width: 75%;
+    padding: 80px;
+}
+
+/* --------------- Comment creation --------------- */
+
+.comment-create {
+    padding: 5px;
 }
 
 /* --------------- Responsivnes --------------- */

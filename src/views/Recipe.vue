@@ -65,8 +65,8 @@
         <!-- MODALS -->
         <v-dialog />
 
-        <modal name="comment-creation-modal">
-            <Comment :recipeId="this.id"/>
+        <modal name="comment-creation-modal" :width=800>
+            <Comment :recipeId="this.recipe.id" :recipeUserId="this.recipe.user_id" @created="hide()"/>
         </modal>
 
     </div>
