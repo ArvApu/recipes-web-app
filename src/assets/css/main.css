@@ -419,6 +419,37 @@ body, #app{
     padding-left: 25px;
 }
 
+#recipe-view .comment {
+    height: 100px;
+}
+
+#recipe-view .comment {
+    height: 110px;
+    margin-top: 20px;
+    border: 1px solid black;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#recipe-view .comment h3{
+    margin: 0px;
+}
+
+#recipe-view .comment-meta {
+    margin-bottom: 10px;
+}
+
+#recipe-view .comment-information {
+    font-style:italic;
+    margin-top: 10px;
+    font-size: 12px;
+}
+
+#recipe-view .comment-content {
+    /* margin-top: 10px; */
+}
+
+
 /* --------------- Recipe creation --------------- */
 
 .recipe-create {
