@@ -29,12 +29,14 @@ export default {
   props: {
     recipeUserId: Number,
     recipeId: Number,
+    title: String,
+    comment: String,
   },
   data() {
     return {
       data: {
-        title: null,
-        comment: null,
+        title: this.title ? this.title : null,
+        comment: this.comment ? this.comment : null,
       },
       shouldEdit: this.commentId ? true : false
     };

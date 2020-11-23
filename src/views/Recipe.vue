@@ -58,6 +58,11 @@
                 <div class="comment-content">
                     {{comment.comment}}
                 </div>
+
+                <div class='comment-control'>
+                    <button class='btn btn-secondary' @click="showCommentEdit(comment)"> Edit </button>
+                    <button class='btn btn-danger' @click="deleteComment()"> Delete </button>
+                </div>
             </div>
 
         </div>
@@ -81,6 +86,17 @@
             </div>
         </modal>
 
+        <modal name="comment-edit-modal" :width=800 :adaptive=true>
+            <div class='recipe-edit'>
+                <Comment @updated="hideEdit()"
+                    :title="this.currentComment.title"
+                    :comment="this.currentComment.comment"
+                    :commendId="this.currentComment.id"
+                    :recipeId="this.recipe.id" 
+                    :recipeUserId="this.recipe.user_id"
+                />
+            </div>
+        </modal>
     </div>
 </template>
 
@@ -98,6 +114,11 @@ export default {
   data() {
     return {
       id: this.$route.params.id,
+      currentComment: {
+          id: null,
+          name: null,
+          title: null,
+      },
       user: {
           username: "usernamexxusernamexxusernamexxusernamexxusernamexxusernamexx"
       },
@@ -180,6 +201,18 @@ export default {
     hideEdit () {
         this.$modal.hide('recipe-edit-modal');
     },
+    showCommentEdit(comment) {
+        this.currentComment.id = comment.name;
+        this.currentComment.title = comment.title;
+        this.currentComment.comment = comment.comment;
+        this.$modal.show('comment-edit-modal');
+    },
+    hideCommentEdit () {
+        this.$modal.hide('comment-edit-modal');
+    },
+    deleteComment() {
+        console.log('comment deleted');
+    }
   }
 }
 </script>

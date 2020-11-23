@@ -423,7 +423,7 @@ body, #app{
 }
 
 #recipe-view .comment {
-    height: 110px;
+    min-height: 110px;
     margin-top: 20px;
     border: 1px solid black;
     padding: 10px;
@@ -447,6 +447,14 @@ body, #app{
 #recipe-view .comments-section-name {
     display: flex;
     flex-direction: column;
+}
+
+#recipe-view .comment-control {
+    margin-top: 10px;
+}
+
+#recipe-view .comment-control button{
+    margin-right: 10px;
 }
 
 /* --------------- Form groups --------------- */
@@ -551,10 +559,6 @@ body, #app{
         height: auto;
     }
 
-    #recipe-view .comment {
-        height: 200px;
-    }
-
     @media only screen and (max-width: 420px) {
         #footer {
             display: none;
@@ -569,16 +573,6 @@ body, #app{
 
         #header .logo {
             display: none;
-        }
-
-        #recipe-view .comment {
-            height: 320px;
-        }
-
-        @media only screen and (max-width: 330px) {
-            #recipe-view .comment {
-                height: 420px;
-            }
         }
 
     }
@@ -629,10 +623,6 @@ body, #app{
         width: 90%;
         height: auto;
     }
-
-    #recipe-view .comment {
-        height: 150px;
-    }
 }
 
 /* Medium devices (landscape tablets) */
@@ -662,10 +652,6 @@ body, #app{
         width: 90%;
         height: auto;
     }
-
-    #recipe-view .comment {
-        height: 150px;
-    }
 }
 
 /* Large devices (laptops/desktops) */
@@ -677,9 +663,5 @@ body, #app{
     #recipe-view .content-block {
         width: 90%;
         height: auto;
-    }
-
-    #recipe-view .comment {
-        height: 150px;
     }
 }
