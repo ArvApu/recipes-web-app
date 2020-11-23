@@ -1,14 +1,14 @@
 <template>
   <div class='comment-create'>
-        <form id="comment-form" @submit.prevent="store">
+        <form id="comment-form" @submit.prevent="handle">
             <p class='form-group'>
                 <label for="title"> Title </label>
-                <input class='form-input' type="text" id="title" name="title" v-model="title" requried>
+                <input class='form-input' type="text" id="title" name="title" v-model="data.title" requried>
             </p>
 
             <p class='form-group'>
                 <label for="comment"> Description</label>
-                <textarea class='form-input-textarea' id="comment" name="comment" v-model="comment" requried/>
+                <textarea class='form-input-textarea' id="comment" name="comment" v-model="data.comment" requried/>
             </p>
 
             <p class='form-group'>
@@ -32,20 +32,28 @@ export default {
   },
   data() {
     return {
+      data: {
         title: null,
         comment: null,
+      },
+      shouldEdit: this.commentId ? true : false
     };
   },
   methods: {
-    store() {
-
-        const payload = {
-            title: this.title,
-            comment: this.comment,
+    handle() {
+        if(this.shouldEdit) {
+            this.edit();
+        } else {
+            this.store();
         }
-
-        commentsApi.create(this.recipeUserId, this.recipeId, payload);
+    },
+    store() {
+        commentsApi.create(this.recipeUserId, this.recipeId, this.data);
         this.$emit('created');
+    },
+    edit() {
+        commentsApi.update(this.recipeUserId, this.recipeId, this.commentId, this.data);
+        this.$emit('updated');
     },
   }
 }
