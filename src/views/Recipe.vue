@@ -65,11 +65,11 @@
         <!-- MODALS -->
         <v-dialog />
 
-        <modal name="comment-creation-modal" :width=800>
+        <modal name="comment-creation-modal" :width=800 :adaptive=true>
             <Comment @created="hide()" :recipeId="this.recipe.id" :recipeUserId="this.recipe.user_id"/>
         </modal>
 
-        <modal name="recipe-edit-modal" :width=800 :height=500>
+        <modal name="recipe-edit-modal" :width=800 :height=500 :adaptive=true>
             <div class='recipe-edit'>
                 <RecipEdit @updated="hideEdit()"
                     :recipeId="this.recipe.id"
