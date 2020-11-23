@@ -405,6 +405,12 @@ body, #app{
         flex: 0 1 90%;  
     }
 
+    .recipe-create {
+        margin: auto;
+        width: 75%;
+        padding: 60px 0px;
+    }
+
     @media only screen and (max-width: 420px) {
         #footer {
             display: none;
@@ -419,12 +425,6 @@ body, #app{
 
         #header .logo {
             display: none;
-        }
-
-        .recipe-create {
-            margin: auto;
-            width: 75%;
-            padding: 10px 0px;
         }
     }
 }
@@ -450,6 +450,12 @@ body, #app{
     .recipe {
         margin: 1rem 0.5em;
         flex: 0 1 calc(50% - 1em);  
+    }
+
+    .recipe-create {
+        margin: auto;
+        width: 75%;
+        padding: 80px 0px;
     }
 }
 
