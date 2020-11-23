@@ -66,7 +66,7 @@
         <v-dialog />
 
         <modal name="comment-creation-modal">
-            RECIPE CREATION
+            <Comment :recipeId="this.id"/>
         </modal>
 
     </div>
@@ -74,9 +74,13 @@
 
 <script>
 import moment from 'moment';
+import Comment from '@/components/Comment.vue'
 
 export default {
   name: 'Recipe',
+  components: {
+      Comment
+  },
   data() {
     return {
       id: this.$route.params.id,
