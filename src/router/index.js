@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Feed from '../views/Feed.vue'
+import Users from '../views/Users.vue'
 import Recipes from '../views/Recipes.vue'
 import Recipe from '../views/Recipe.vue'
 import RecipesCreate from '../views/RecipesCreate.vue'
@@ -18,6 +19,11 @@ const routes = [
     path: '/feed',
     name: 'Feed',
     component: Feed
+  },
+  {
+    path: '/users',
+    name: 'Users',
+    component: Users
   },
   {
     path: '/recipes',

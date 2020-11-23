@@ -318,6 +318,49 @@ body, #app{
     background-color: #61c0bf;
 }
 
+/* --------------- Users --------------- */
+
+.users {
+    display: flex;
+    flex-direction: column;
+    margin: 25px;
+}
+
+.users .user {
+    border: 1px solid black;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 10px;
+    padding: 10px;
+    min-height: 100px;
+}
+
+.users .user .user-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.users .user .user-content span {
+    display: inline-block;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+}
+
+.users .user .user-control {
+    display: flex;
+    align-items: center;
+    min-width: 100px;
+}
+
+.users .user .user-control button {
+    margin-left: 10px;
+    height: 40px;
+}
+
 /* --------------- Recipes --------------- */
 
 .recipes {
