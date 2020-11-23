@@ -1,32 +1,30 @@
 <template>
-    <div class='recipe-create'>
-        <form id="recipe-form" @submit.prevent="store">
-            <p class='form-group'>
-                <label for="name"> Name </label>
-                <input class='form-input' type="text" id="name" name="name" v-model="name" requried>
-            </p>
+    <form id="recipe-form" @submit.prevent="handle">
+        <p class='form-group'>
+            <label for="name"> Name </label>
+            <input class='form-input' type="text" id="name" name="name" v-model="data.name" requried>
+        </p>
 
-            <p class='form-group'>
-                <label for="description"> Description</label>
-                <textarea class='form-input-textarea' id="description" name="description" v-model="description" requried/>
-            </p>
+        <p class='form-group'>
+            <label for="description"> Description</label>
+            <textarea class='form-input-textarea' id="description" name="description" v-model="data.description" requried/>
+        </p>
 
-            <p class='form-group'>
-                <label for="recipe"> Recipe </label>
-                <textarea class='form-input-textarea' id="recipe" name="recipe" v-model="recipe" requried/>
-            </p>
+        <p class='form-group'>
+            <label for="recipe"> Recipe </label>
+            <textarea class='form-input-textarea' id="recipe" name="recipe" v-model="data.recipe" requried/>
+        </p>
 
-            <p class='form-group'>
-                <label for="duration"> Duration {{ this.duration }} (minutes) </label>
-                <input class='form-input slider' type="range" min="10" max="180" value="this.duration" id="duration" name="duration" v-model="duration" requried>
-            </p>
+        <p class='form-group'>
+            <label for="duration"> Duration {{ this.data.duration }} (minutes) </label>
+            <input class='form-input slider' type="range" min="10" max="180" value="this.data.duration" id="duration" name="duration" v-model="data.duration" requried>
+        </p>
 
-            <p class='form-group'>
-                <input class='form-input btn btn-primary' type="submit" id="add-recipe" name="add-recipe" value="Submit" requried> 
-            </p>
+        <p class='form-group'>
+            <input class='form-input btn btn-primary' type="submit" id="add-recipe" name="add-recipe" value="Submit" requried> 
+        </p>
 
-        </form>
-    </div>
+    </form>
 </template>
 
 <script>
@@ -37,32 +35,39 @@ const recipesApi = ApiFactory.get('recipes');
 export default {
   name: 'RecipesCreate',
   props: {
-    nameProp: String,
-    descriptionProp: String,
-    recipeProp: String,
-    durationProp: Number,
+    recipeId: Number,
+    name: String,
+    description: String,
+    recipe: String,
+    duration: Number,
   },
   data() {
     return {
-        name: this.nameProp ? this.nameProp : null,
-        description: this.descriptionProp ? this.descriptionProp : null,
-        recipe: this.recipeProp ? this.recipeProp : null,
-        duration: this.durationProp ? this.durationProp : 30
+        data: {
+            name: this.name ? this.name : null,
+            description: this.description ? this.description : null,
+            recipe: this.recipe ? this.recipe : null,
+            duration: this.duration ? this.duration : 30
+        },
+        shouldEdit: this.recipeId ? true : false,
     };
   },
   methods: {
-    store() {
-
+    handle() {
         const userId = 1; // Todo dynamicly load it
-
-        const payload = {
-            name: this.name,
-            description: this.description,
-            recipe: this.recipe,
-            duration: this.duration
+        if(this.shouldEdit) {
+            this.edit(userId);
+        } else {
+            this.store(userId);
         }
-
-        recipesApi.create(userId, payload);
+    },
+    store(userId) {
+        recipesApi.create(userId, this.data);
+        this.$emit('created');
+    },
+    edit(userId) {
+        recipesApi.update(userId, this.recipeId, this.data);
+        this.$emit('updated');
     }
   }
 }

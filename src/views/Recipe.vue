@@ -37,7 +37,7 @@
          </div>
 
         <div class='recipe-control'>
-            <button class='btn btn-secondary'> Edit </button>
+            <button class='btn btn-secondary' @click="showEdit()"> Edit </button>
             <button class='btn btn-danger' @click="showDelete()"> Delete </button>
         </div>
         
@@ -66,7 +66,19 @@
         <v-dialog />
 
         <modal name="comment-creation-modal" :width=800>
-            <Comment :recipeId="this.recipe.id" :recipeUserId="this.recipe.user_id" @created="hide()"/>
+            <Comment @created="hide()" :recipeId="this.recipe.id" :recipeUserId="this.recipe.user_id"/>
+        </modal>
+
+        <modal name="recipe-edit-modal" :width=800 :height=500>
+            <div class='recipe-edit'>
+                <RecipEdit @updated="hideEdit()"
+                    :recipeId="this.recipe.id"
+                    :name="this.recipe.name"
+                    :description="this.recipe.description"
+                    :recipe="this.recipe.recipe"
+                    :duration="this.recipe.duration"
+                />
+            </div>
         </modal>
 
     </div>
@@ -75,11 +87,13 @@
 <script>
 import moment from 'moment';
 import Comment from '@/components/Comment.vue'
+import RecipEdit from '@/components/Recipe.vue'
 
 export default {
   name: 'Recipe',
   components: {
-      Comment
+      Comment,
+      RecipEdit
   },
   data() {
     return {
@@ -129,6 +143,12 @@ export default {
     formatDate(date) {
         return moment(date).format('YYYY-MM-DD')
     },
+    show () {
+        this.$modal.show('comment-creation-modal');
+    },
+    hide () {
+        this.$modal.hide('comment-creation-modal');
+    },
     showDelete () {
         this.$modal.show('dialog', {
         title: 'WARNING',
@@ -154,12 +174,12 @@ export default {
     hideDelete () {
         this.$modal.hide('dialog');
     },
-    show () {
-        this.$modal.show('comment-creation-modal');
+    showEdit () {
+        this.$modal.show('recipe-edit-modal');
     },
-    hide () {
-        this.$modal.hide('comment-creation-modal');
-    }
+    hideEdit () {
+        this.$modal.hide('recipe-edit-modal');
+    },
   }
 }
 </script>

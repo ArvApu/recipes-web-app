@@ -1,5 +1,7 @@
 <template>
-    <Recipe/>
+    <div class='recipe-create'>
+      <Recipe/>
+    </div>
 </template>
 
 <script>

@@ -493,6 +493,12 @@ body, #app{
     padding: 5px;
 }
 
+/* --------------- Recipe edit --------------- */
+
+.recipe-edit {
+    padding: 10px;
+}
+
 /* --------------- Responsivnes --------------- */
 
 /* Extra small devices (phones) */
