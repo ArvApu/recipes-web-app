@@ -4,7 +4,6 @@ import Home from '../views/Home.vue'
 import Feed from '../views/Feed.vue'
 import Recipes from '../views/Recipes.vue'
 import Recipe from '../views/Recipe.vue'
-import Comments from '../views/Comments.vue'
 import RecipesCreate from '../views/RecipesCreate.vue'
 
 Vue.use(VueRouter)
@@ -19,11 +18,6 @@ const routes = [
     path: '/feed',
     name: 'Feed',
     component: Feed
-  },
-  {
-    path: '/comments',
-    name: 'Comments',
-    component: Comments
   },
   {
     path: '/recipes',
