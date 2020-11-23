@@ -1,7 +1,7 @@
 <template>
   <div class="recipes">
       
-        <div class="recipe" v-for="recipe in this.recipes"  v-bind:key="recipe.id"> 
+        <div class="recipe" v-for="recipe in this.recipes" v-bind:key="recipe.id" @click="goToRecipe(recipe.user_id, recipe.id)"> 
         
             <img class='image' src='https://ciao.lt/wp-content/uploads/2018/12/burger.jpeg' >
 
@@ -29,6 +29,9 @@ export default {
         date = new Date(date);
         var ms = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
         return date.getDate() + ' ' + ms[date.getMonth()] + ' ' + date.getFullYear();
+    },
+    goToRecipe(userId, id) {
+      this.$router.push({name:'Recipe', params:{user_id:userId, id:id}});
     }
   }
 }
