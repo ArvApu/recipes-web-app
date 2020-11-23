@@ -32,18 +32,16 @@
                         <b>Last update:</b> {{ formatDateTime(this.recipe.updated_at) }}
                     </span>
                     
-                    
                 </div>
             </div>
          </div>
 
         <div class='recipe-control'>
             <button class='btn btn-secondary'> Edit </button>
-            <button class='btn btn-danger'> Delete </button>
+            <button class='btn btn-danger' @click="showDelete('recipe')"> Delete </button>
         </div>
-
         
-        <div class='comments'>
+        <div class='comments'> 
             <h2> Comments </h2>
 
             <div class="comment" v-for="comment in this.comments"  v-bind:key="comment.id">
@@ -60,6 +58,10 @@
             </div>
 
         </div>
+
+        <!-- MODALS -->
+        <v-dialog />
+
     </div>
 </template>
 
@@ -116,6 +118,31 @@ export default {
     },
     formatDate(date) {
         return moment(date).format('YYYY-MM-DD')
+    },
+    showDelete (item) {
+        this.$modal.show('dialog', {
+        title: 'WARNING',
+        text: `Are you sure you want to delete this ${item}?` ,
+        buttons: [
+            {
+                title: 'Do It',
+                handler: () => {
+                    alert('Recipe deleted')
+                    this.$modal.hide('dialog');
+                }
+
+            },
+            {
+                title: 'Cancel',
+                handler: () => {
+                    this.$modal.hide('dialog');
+                }
+            },
+        ]
+        })
+    },
+    hideDelete () {
+        this.$modal.hide('dialog');
     }
   }
 }
