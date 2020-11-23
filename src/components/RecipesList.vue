@@ -9,7 +9,7 @@
                 <span class='title'> {{ recipe.name }} </span>
                 <div class='meta'>
                     <span> {{ formatCompat(recipe.created_at) }} </span>  
-                    <span> 60min </span>
+                    <span> {{ recipe.duration }} min </span>
                 </div>
             </div>
 

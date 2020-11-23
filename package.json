@@ -10,6 +10,7 @@
   "dependencies": {
     "axios": "^0.21.0",
     "core-js": "^3.6.5",
+    "moment": "^2.29.1",
     "pkce": "^1.0.0-beta2",
     "vue": "^2.6.11",
     "vue-burger-menu": "^2.0.5",

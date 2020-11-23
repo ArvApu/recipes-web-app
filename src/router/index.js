@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Feed from '../views/Feed.vue'
 import Recipes from '../views/Recipes.vue'
+import Recipe from '../views/Recipe.vue'
 import Comments from '../views/Comments.vue'
 import RecipesCreate from '../views/RecipesCreate.vue'
 
@@ -28,6 +29,11 @@ const routes = [
     path: '/recipes',
     name: 'Recipes',
     component: Recipes
+  },
+  {
+    path: '/recipes/:id',
+    name: 'Recipe',
+    component: Recipe
   },
   {
     path: '/recipes-create',

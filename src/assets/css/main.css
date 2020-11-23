@@ -203,6 +203,26 @@ body, #app{
     background-color: #007c70;
 }
 
+.btn-secondary {
+    color: #ffffff;
+    font-weight: bold;
+    background-color: #393e46;
+}
+
+.btn-secondary:hover {
+    background-color: #222831;
+}
+
+.btn-danger {
+    color: #ffffff;
+    font-weight: bold;
+    background-color:#ac0000;
+}
+
+.btn-danger:hover {
+    background-color: #810000;
+}
+
 /* --------------- Mobile menu --------------- */
 
 #mobile-menu {
@@ -337,6 +357,66 @@ body, #app{
 .recipe .meta {
     display: flex;
     justify-content: space-between;
+}
+
+/* --------------- Recipe view --------------- */
+
+#recipe-view {
+    display: flex;
+    flex-direction: column;
+    margin: 25px;
+}
+
+#recipe-view .image-block {
+    width: 500px;
+    height: 350px;
+}
+
+#recipe-view .image {
+    max-width: 100%;
+    height: auto; 
+    display:block;
+} 
+
+#recipe-view .recipe-data {
+    display: flex;
+    flex-direction: row;
+    padding: 25px 10px 0px 25px;
+}
+
+#recipe-view .content-block {
+    display: flex;
+    flex-direction: column;
+    width: 900px;
+    height: 350px;
+    margin-left: 30px;
+}
+
+#recipe-view .content-block .content h2{
+    margin-top: 0px;
+}
+
+#recipe-view .content-block .meta{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+#recipe-view .recipe-control {
+    padding-left: 25px;
+    margin-top: 25px;
+    display: flex;
+}
+
+#recipe-view .recipe-control button {
+    margin-right: 20px;
+    width: 20%;
+}
+
+#recipe-view .comments {
+    margin-top: 25px;
+    padding-left: 25px;
 }
 
 /* --------------- Recipe creation --------------- */
