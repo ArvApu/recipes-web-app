@@ -38,11 +38,14 @@
 
         <div class='recipe-control'>
             <button class='btn btn-secondary'> Edit </button>
-            <button class='btn btn-danger' @click="showDelete('recipe')"> Delete </button>
+            <button class='btn btn-danger' @click="showDelete()"> Delete </button>
         </div>
         
         <div class='comments'> 
-            <h2> Comments </h2>
+            <div class="comments-section-name">
+                <h2>Comments</h2>
+                <button class='btn btn-primary' @click="show()">Comment this recipe</button>
+            </div>
 
             <div class="comment" v-for="comment in this.comments"  v-bind:key="comment.id">
                 <div class="comment-meta">
@@ -62,11 +65,14 @@
         <!-- MODALS -->
         <v-dialog />
 
+        <modal name="comment-creation-modal">
+            RECIPE CREATION
+        </modal>
+
     </div>
 </template>
 
 <script>
-
 import moment from 'moment';
 
 export default {
@@ -119,10 +125,10 @@ export default {
     formatDate(date) {
         return moment(date).format('YYYY-MM-DD')
     },
-    showDelete (item) {
+    showDelete () {
         this.$modal.show('dialog', {
         title: 'WARNING',
-        text: `Are you sure you want to delete this ${item}?` ,
+        text: 'Are you sure you want to delete this recipe?',
         buttons: [
             {
                 title: 'Do It',
@@ -143,6 +149,12 @@ export default {
     },
     hideDelete () {
         this.$modal.hide('dialog');
+    },
+    show () {
+        this.$modal.show('comment-creation-modal');
+    },
+    hide () {
+        this.$modal.hide('comment-creation-modal');
     }
   }
 }

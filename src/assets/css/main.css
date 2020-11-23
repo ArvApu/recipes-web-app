@@ -431,7 +431,7 @@ body, #app{
     border-radius: 5px;
 }
 
-#recipe-view .comment h3{
+#recipe-view .comment h3 {
     margin: 0px;
 }
 
@@ -445,8 +445,9 @@ body, #app{
     font-size: 12px;
 }
 
-#recipe-view .comment-content {
-    /* margin-top: 10px; */
+#recipe-view .comments-section-name {
+    display: flex;
+    flex-direction: column;
 }
 
 /* --------------- Recipe creation --------------- */
