@@ -4,12 +4,12 @@ const resource = 'recipes';
 const parentResource = 'users';
 
 export default {
+  all(prId = null) {
 
-  entire() {
-    return api.get(`/${resource}`);
-  },
+    if(prId === null) {
+      return api.get(`/${resource}`);
+    }
 
-  all(prId) {
     return api.get(`/${parentResource}/${prId}/${resource}`);
   },
 

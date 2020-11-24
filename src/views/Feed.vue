@@ -26,7 +26,7 @@ export default {
     }
   },
   created() {
-    recipesApi.entire().then((recipes) => {
+    recipesApi.all().then((recipes) => {
       this.recipes = recipes.data
     });
   }

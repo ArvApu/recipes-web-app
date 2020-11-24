@@ -9,7 +9,7 @@
             </div>
 
             <div class='user-control'>
-                <button class='btn btn-danger' @click="show()"> Delete </button>
+                <button v-if="user.role_id === 'user'" class='btn btn-danger' @click="show()"> Delete </button>
             </div>
         </div>
 
@@ -19,34 +19,15 @@
 
 <script>
 import moment from 'moment';
+import ApiFactory from '@/api/api.factory'
+
+const usersApi = ApiFactory.get('users');
 
 export default {
   name: 'Users',
   data() {
     return {
-      users: [
-          {
-              id: 1,
-              username: "123456789012345678901234567890123456789012345678901234567890",
-              role_id: 'user',
-              email: "1234567890123456789012345678901234567890123456789012345678901234567890@mail.com",
-              last_login_at: "2020-10-22T16:39:33.000000Z",
-          },
-          {
-              id: 2,
-              username: "mario",
-              role_id: 'admin',
-              email: "mario@mail.com",
-              last_login_at: "2020-10-22T16:39:33.000000Z",
-          },
-          {
-              id: 3,
-              username: "luigy",
-              role_id: 'user',
-              email: "luigy@mail.com",
-              last_login_at: "2020-10-22T16:39:33.000000Z",
-          }
-      ],
+      users: [],
     };
   },
   methods: {
@@ -78,6 +59,11 @@ export default {
     hide () {
         this.$modal.hide('dialog');
     },
+  },
+  created() {
+    usersApi.all().then((users) => {
+    this.users = users.data
+    });
   }
 }
 </script>
