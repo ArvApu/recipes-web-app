@@ -21,9 +21,6 @@ export default {
     login() {
       AuthService.login();
     },
-    async api() {
-      this.user = await AuthService.getUser();
-    }
   }
 }
 </script>

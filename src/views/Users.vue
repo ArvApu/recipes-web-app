@@ -50,9 +50,6 @@ export default {
     };
   },
   methods: {
-    login() {
-      console.log('hey');
-    },
     formatDateTime(date) {
         return moment(date).format('YYYY-MM-DD HH:MM:SS')
     },
