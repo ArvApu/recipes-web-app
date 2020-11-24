@@ -3,7 +3,11 @@
 </template>
 
 <script>
+import ApiFactory from '@/api/api.factory'
 import RecipesList from '@/components/RecipesList.vue'
+import SessionService from '@/services/session.service.js'
+
+const recipesApi = ApiFactory.get('recipes');
 
 export default {
   name: 'Recipes',
@@ -12,18 +16,8 @@ export default {
   },
   data() {
     return {
-      recipes: [
-        {        
-            "id": 1,
-            "user_id": 1,
-            "name": "Turkey on the rocks",
-            "description": "Some good ol fashion turkey on the rocks",
-            "recipe": "You will ned some turkey and some rocks. Put turkey on the rocks and volia.",
-            "created_at": "2020-10-22T16:39:33.000000Z",
-            "updated_at": "2020-10-22T16:39:33.000000Z"
-        },   
-      ]
-    };
+      recipes: [],
+    }
   },
   methods: {
     formatCompat(date) {
@@ -31,6 +25,12 @@ export default {
         var ms = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
         return date.getDate() + ' ' + ms[date.getMonth()] + ' ' + date.getFullYear();
     }
+  },
+  created() {
+    const user = SessionService.getUser();
+    recipesApi.all(user.id).then((recipes) => {
+      this.recipes = recipes.data
+    });
   }
 }
 </script>
