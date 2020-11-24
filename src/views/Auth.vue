@@ -2,9 +2,9 @@
 import AuthService from '@/services/auth.service.js'
 
 export default {
-  created() {
-    AuthService.getToken();
-    this.$router.push('/');
+  async created() {
+    await AuthService.getToken();
+    window.location.replace(`${process.env.VUE_APP_BASE_URL}/feed`);
   }
 }
 </script>

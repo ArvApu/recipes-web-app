@@ -16,13 +16,13 @@
 </template>
 
 <script>
-import AuthService from '@/services/auth.service.js';
+import SessionService from '@/services/session.service.js';
 
 export default {
   name: 'NavLinks',
   data() {
     return {
-      isAdmin: AuthService.getUser().then( (user) => this.isAdmin = user.role_id == 'admin'),
+      isAdmin: SessionService.isAuthenticated() ? SessionService.getUser().role_id === 'admin' : false,
     }
   }
 }

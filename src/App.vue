@@ -3,14 +3,14 @@
 
     <!-- HEADER -->
     <header id="header"> 
-        <Slide id='mobile-menu'>
+        <Slide id='mobile-menu' v-if="this.isAuthenticated">
           <NavLinks/>
         </Slide>
       <div class='logo'>
           <img class='image' src='@/assets/logo.svg' >
       </div>  
 
-      <div class='buttons'>
+      <div class='buttons' v-if="this.isAuthenticated">
         <button class='btn' @click="logout()"> LOGOUT </button>
       </div>
 
@@ -19,7 +19,7 @@
     <!-- MAIN -->
     <div id="main">
 
-      <nav id="menu">
+      <nav id="menu" v-if="this.isAuthenticated">
         <NavLinks/>
       </nav>
 
@@ -49,12 +49,18 @@
 <script>
 // @ is an alias to /src
 import AuthService from '@/services/auth.service.js'
+import SessionService from '@/services/session.service.js';
 import NavLinks from '@/components/NavLinks.vue'
 import { Slide } from 'vue-burger-menu' 
  
 
 export default {
   name: 'App',
+  data() {
+    return {
+      isAuthenticated: SessionService.isAuthenticated(),
+    }
+  },
   components: {
     NavLinks,
     Slide

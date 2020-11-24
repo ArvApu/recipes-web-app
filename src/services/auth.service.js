@@ -66,13 +66,22 @@ class AuthService {
   }
 
   async getUser() {
+
+    const accessToken = SessionService.getAccessToken();
+
+    if(!accessToken) {
+      return Promise.resolve(null);
+    }
+
     try {
         const response = await axios.get(`${AuthService.USER_ENDPOINT}`, {
           headers: {
-            Authorization: 'Bearer ' + SessionService.getAccessToken()
+            Authorization: 'Bearer ' + accessToken
           }
         });
         
+        SessionService.setUser(response.data);
+
         return Promise.resolve(response.data);
       } catch(error) {
         return Promise.reject(error);

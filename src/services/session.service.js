@@ -3,6 +3,7 @@ class SessionService {
     static ACCESS_TOKEN_STORAGE_KEY  = process.env.VUE_APP_ACCESS_TOKEN_STORAGE_KEY  || 'access_token';
     static REFRESH_TOKEN_STORAGE_KEY = process.env.VUE_APP_REFRESH_TOKEN_STORAGE_KEY || 'refresh_token';
     static CODE_VERIFIER_STORAGE_KEY = process.env.VUE_APP_CODE_VERIFIER_STORAGE_KEY || 'code_verifier';
+    static USER_STORAGE_KEY          = process.env.VUE_APP_USER_STORAGE_KEY          || 'user_data';
 
     constructor() {
         this.storage = sessionStorage;
@@ -37,6 +38,18 @@ class SessionService {
         let codeVerifier = sessionStorage.getItem(SessionService.CODE_VERIFIER_STORAGE_KEY + '_' + state);
         sessionStorage.removeItem(SessionService.CODE_VERIFIER_STORAGE_KEY + '_' + state);
         return codeVerifier;
+    }
+
+    setUser(user) {
+        this.storage.setItem(SessionService.USER_STORAGE_KEY, JSON.stringify(user));
+    }
+
+    getUser() {
+        return JSON.parse(this.storage.getItem(SessionService.USER_STORAGE_KEY));
+    }
+
+    isAuthenticated() {
+        return this.getAccessToken() !== null;
     }
 }
 
