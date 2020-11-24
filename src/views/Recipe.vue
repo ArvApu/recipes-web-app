@@ -38,7 +38,7 @@
             </div>
          </div>
 
-        <div class='recipe-control'>
+        <div class='recipe-control' v-if="canControl()">
             <button class='btn btn-secondary' @click="showEdit()"> Edit </button>
             <button class='btn btn-danger' @click="showDelete()"> Delete </button>
         </div>
@@ -61,7 +61,7 @@
                     {{comment.comment}}
                 </div>
 
-                <div class='comment-control'>
+                <div class='comment-control' v-if="canControl()">
                     <button class='btn btn-secondary' @click="showCommentEdit(comment)"> Edit </button>
                     <button class='btn btn-danger' @click="deleteComment(comment.id)"> Delete </button>
                 </div>
@@ -131,6 +131,9 @@ export default {
     };
   },
   methods: {
+    canControl() {
+        return this.$route.params.user_id === SessionService.getUser().id;
+    },
     formatDateTime(date) {
         return moment(date).format('YYYY-MM-DD HH:MM:SS')
     },
@@ -172,6 +175,7 @@ export default {
         this.$modal.show('recipe-edit-modal');
     },
     hideEdit () {
+        this.loadRecipe();
         this.$modal.hide('recipe-edit-modal');
     },
     showCommentEdit(comment) {
@@ -199,18 +203,18 @@ export default {
       commentsApi.all(userId, recipeId).then((comments) => {
           this.comments = comments.data;
       });
-    }
-  },
-  created() {
-      SessionService.getUser();
-
+    },
+    loadRecipe() {
       const userId   = this.$route.params.user_id; 
       const recipeId = this.$route.params.id; 
 
       recipesApi.get(userId, recipeId).then((recipe) => {
           this.recipe = recipe.data;
       });
-
+    }
+  },
+  created() {
+      this.loadRecipe();
       this.loadComments();
   }
 }
