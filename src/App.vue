@@ -67,6 +67,7 @@ export default {
   },
   methods: {
     logout() {
+      this.isAuthenticated = false;
       AuthService.logout();
       this.$router.push('/');
     }

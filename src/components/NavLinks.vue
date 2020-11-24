@@ -3,7 +3,7 @@
         <li>
           <router-link :to="{ path: '/feed' }" exact-active-class="side-panel-exact-active" > Feed </router-link>
         </li>
-        <li v-if="isAdmin">
+        <li v-if="this.isAdmin">
           <router-link :to="{ path: '/users' }" exact-active-class="side-panel-exact-active" > Users </router-link>
         </li>
         <li>
