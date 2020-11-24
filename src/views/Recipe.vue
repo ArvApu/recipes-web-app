@@ -23,7 +23,9 @@
                     <span> 
                         <b>Author:</b> {{ this.recipe.author }} 
                     </span>
-
+                    <span> 
+                        <b>Duration:</b> {{ this.recipe.duration }} 
+                    </span>
                     <span>
                         <b>Created:</b> {{ formatDateTime(this.recipe.created_at) }}
                     </span>
