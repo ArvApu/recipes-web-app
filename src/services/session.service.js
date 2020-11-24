@@ -48,6 +48,10 @@ class SessionService {
         return JSON.parse(this.storage.getItem(SessionService.USER_STORAGE_KEY));
     }
 
+    clearUser() {
+        this.storage.removeItem(SessionService.USER_STORAGE_KEY);
+    }
+
     isAuthenticated() {
         return this.getAccessToken() !== null;
     }

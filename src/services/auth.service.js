@@ -9,6 +9,7 @@ class AuthService {
   static REDIRECT_URI      = process.env.VUE_APP_BASE_URL + '/auth/callback';
   static CLIENT_ID         = process.env.VUE_APP_CLIENT_ID;
   static USER_ENDPOINT     = process.env.VUE_APP_API_URL + '/user';
+  static LOGOUT_URI        = process.env.VUE_APP_AUTH_SERVER_BASE_URL + '/api/token/revoke';
 
   async login() {
     const codePair = create();
@@ -86,6 +87,15 @@ class AuthService {
       } catch(error) {
         return Promise.reject(error);
       }
+  }
+
+  logout() {
+    axios.get(AuthService.LOGOUT_URI);
+
+    SessionService.clearTokens();
+    SessionService.clearUser();
+
+    window.location.replace(`${process.env.VUE_APP_BASE_URL}`);
   }
 }
 
