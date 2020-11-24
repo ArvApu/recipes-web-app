@@ -132,7 +132,7 @@ export default {
   },
   methods: {
     canControl() {
-        return this.$route.params.user_id === SessionService.getUser().id;
+        return this.$route.params.user_id == SessionService.getUser().id;
     },
     formatDateTime(date) {
         return moment(date).format('YYYY-MM-DD HH:MM:SS')
@@ -154,8 +154,9 @@ export default {
             {
                 title: 'Do It',
                 handler: () => {
-                    alert('Recipe deleted')
-                    this.$modal.hide('dialog');
+                    this.$modal.hide('dialog'); 
+                    recipesApi.delete(this.recipe.user_id, this.recipe.id);
+                    this.$router.back();
                 }
 
             },
