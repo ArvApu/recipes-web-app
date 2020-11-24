@@ -71,7 +71,7 @@
         <v-dialog />
 
         <modal name="comment-creation-modal" :width=800 :adaptive=true>
-            <Comment @created="hide()" :recipeId="this.recipe.id" :recipeUserId="this.recipe.user_id"/>
+            <Comment @created="loadComments(); hide();" :recipeId="this.recipe.id" :recipeUserId="this.recipe.user_id"/>
         </modal>
 
         <modal name="recipe-edit-modal" :width=800 :height=500 :adaptive=true>
@@ -183,6 +183,14 @@ export default {
     },
     deleteComment() {
         console.log('comment deleted');
+    },
+    loadComments() {
+      const userId   = this.$route.params.user_id; 
+      const recipeId = this.$route.params.id; 
+
+      commentsApi.all(userId, recipeId).then((comments) => {
+          this.comments = comments.data;
+      });
     }
   },
   created() {
@@ -195,9 +203,7 @@ export default {
           this.recipe = recipe.data;
       });
 
-      commentsApi.all(userId, recipeId).then((comments) => {
-          this.comments = comments.data;
-      });
+      this.loadComments();
   }
 }
 </script>
