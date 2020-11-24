@@ -63,7 +63,7 @@
 
                 <div class='comment-control'>
                     <button class='btn btn-secondary' @click="showCommentEdit(comment)"> Edit </button>
-                    <button class='btn btn-danger' @click="deleteComment()"> Delete </button>
+                    <button class='btn btn-danger' @click="deleteComment(comment.id)"> Delete </button>
                 </div>
             </div>
 
@@ -90,10 +90,10 @@
 
         <modal name="comment-edit-modal" :width=800 :adaptive=true>
             <div class='recipe-edit'>
-                <Comment @updated="hideEdit()"
+                <Comment @updated="hideCommentEdit()"
                     :title="this.currentComment.title"
                     :comment="this.currentComment.comment"
-                    :commendId="this.currentComment.id"
+                    :commentId="this.currentComment.id"
                     :recipeId="this.recipe.id" 
                     :recipeUserId="this.recipe.user_id"
                 />
@@ -123,8 +123,8 @@ export default {
       id: this.$route.params.id,
       currentComment: {
           id: null,
-          name: null,
           title: null,
+          comment: null,
       },
       recipe: {},
       comments: []   
@@ -175,16 +175,22 @@ export default {
         this.$modal.hide('recipe-edit-modal');
     },
     showCommentEdit(comment) {
-        this.currentComment.id = comment.name;
+        this.currentComment.id = comment.id;
         this.currentComment.title = comment.title;
         this.currentComment.comment = comment.comment;
         this.$modal.show('comment-edit-modal');
     },
     hideCommentEdit () {
         this.$modal.hide('comment-edit-modal');
+        this.loadComments();
     },
-    deleteComment() {
-        console.log('comment deleted');
+    deleteComment(commentId) {
+        const userId   = this.$route.params.user_id; 
+        const recipeId = this.$route.params.id; 
+
+        commentsApi.delete(userId, recipeId, commentId).then(() => {
+          this.loadComments();
+        });
     },
     loadComments() {
       const userId   = this.$route.params.user_id; 

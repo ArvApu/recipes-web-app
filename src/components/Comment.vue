@@ -31,6 +31,7 @@ export default {
     recipeId: Number,
     title: String,
     comment: String,
+    commentId: Number,
   },
   data() {
     return {
