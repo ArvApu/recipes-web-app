@@ -21,7 +21,7 @@
 
                 <div class='meta'>
                     <span> 
-                        <b>Author:</b> {{ this.user.username }} 
+                        <b>Author:</b> {{ this.recipe.author }} 
                     </span>
 
                     <span>
@@ -104,6 +104,11 @@
 import moment from 'moment';
 import Comment from '@/components/Comment.vue'
 import RecipEdit from '@/components/Recipe.vue'
+import ApiFactory from '@/api/api.factory'
+import SessionService from '@/services/session.service.js'
+
+const recipesApi  = ApiFactory.get('recipes');
+const commentsApi = ApiFactory.get('comments');
 
 export default {
   name: 'Recipe',
@@ -119,42 +124,8 @@ export default {
           name: null,
           title: null,
       },
-      user: {
-          username: "usernamexxusernamexxusernamexxusernamexxusernamexxusernamexx"
-      },
-      recipe: {        
-            "id": 1,
-            "user_id": 1,
-            "name": "Turkey on the rocks",
-            "description": "One advanced diverted domestic sex repeated bringing you old. Possible procured her trifling laughter thoughts property she met way. Companions shy had solicitude favourable own. Which could saw guest man now heard but. Lasted my coming uneasy marked ",
-            "duration": 60,
-            "recipe": "One advanced diverted domestic sex repeated bringing you old. Possible procured her trifling laughter thoughts property she met way. Companions shy had solicitude favourable own. Which could saw guest man now heard but. Lasted my coming uneasy marked One advanced diverted domestic sex repeated bringing you old. Possible procured her trifling laughter thoughts property she met way. Companions shy had solicitude favourable own. Which could saw guest man now heard but. Lasted my coming uneasy marked ",
-            "created_at": "2020-10-22T16:39:33.000000Z",
-            "updated_at": "2020-10-22T16:39:33.000000Z"
-        },
-        comments: [
-            {
-                "id": 1,
-                "title": "VeryLongLongLongLongLongTitle For this",
-                "author": 'usernamexxusernamexxusernamexxusernamexx',
-                "comment": "One advanced diverted domestic sex repeated bringing you old. Possible procured her trifling laughter thoughts property she met way. Companions shy had solicitude favourable own. Which could saw guest man now heard but. Lasted my coming uneasy marked",
-                "created_at": "2020-10-22T16:39:33.000000Z"
-            },
-            {
-                "id": 2,
-                "title": "Superb dish",
-                "author": 'Jonelisxxxxx',
-                "comment": "Easy to mak and tasty.",
-                "created_at": "2020-10-22T16:39:33.000000Z"
-            },
-            {
-                "id": 3,
-                "title": "Superb dish",
-                "author": 'Jonelisxxxxx',
-                "comment": "Easy to mak and tasty.",
-                "created_at": "2020-10-22T16:39:33.000000Z"
-            },
-        ]   
+      recipe: {},
+      comments: []   
     };
   },
   methods: {
@@ -213,6 +184,20 @@ export default {
     deleteComment() {
         console.log('comment deleted');
     }
+  },
+  created() {
+      SessionService.getUser();
+
+      const userId   = this.$route.params.user_id; 
+      const recipeId = this.$route.params.id; 
+
+      recipesApi.get(userId, recipeId).then((recipe) => {
+          this.recipe = recipe.data;
+      });
+
+      commentsApi.all(userId, recipeId).then((comments) => {
+          this.comments = comments.data;
+      });
   }
 }
 </script>
