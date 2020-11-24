@@ -1,10 +1,8 @@
 <template>
   <div class="home">
-    <button @click="api()"> TEST API </button>
-    <br>
-    <br>
-    {{ this.user }}
 
+      <h1>Welcome to OhMyRecipies. To Continue please login.</h1>
+      <button class='btn btn-secondary' @click="login()"> Login </button>
   </div>
 </template>
 

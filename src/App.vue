@@ -11,8 +11,7 @@
       </div>  
 
       <div class='buttons'>
-        <button class='btn' @click="login()"> LOGIN </button>
-        <!-- <button class='btn' @click="login()"> LOGOUT </button> -->
+        <button class='btn' @click="logout()"> LOGOUT </button>
       </div>
 
     </header>
@@ -61,8 +60,9 @@ export default {
     Slide
   },
   methods: {
-    login() {
-      AuthService.login();
+    logout() {
+      AuthService.logout();
+      this.$router.push('/');
     }
   }
 }

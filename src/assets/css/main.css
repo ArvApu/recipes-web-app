@@ -318,6 +318,24 @@ body, #app{
     background-color: #61c0bf;
 }
 
+/* --------------- Home --------------- */
+
+.home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+}
+
+.home h1 {
+    font-size: 40px;
+}
+
+.home button {
+    width: 1020px;
+}
+
 /* --------------- Users --------------- */
 
 .users {
