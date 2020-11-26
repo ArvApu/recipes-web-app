@@ -1,5 +1,8 @@
 <template>
     <form id="recipe-form" @submit.prevent="handle">
+
+        <Alerts :errors="errors" :alerts="alerts"/>
+
         <p class='form-group'>
             <label for="name"> Name </label>
             <input class='form-input' type="text" id="name" name="name" v-model="data.name" requried>
@@ -28,6 +31,7 @@
 </template>
 
 <script>
+import Alerts from './Alerts.vue'
 import ApiFactory from '@/api/api.factory'
 import SessionService from '@/services/session.service.js'
 
@@ -35,6 +39,9 @@ const recipesApi = ApiFactory.get('recipes');
 
 export default {
   name: 'RecipesCreate',
+  components: {
+      Alerts
+  },
   props: {
     recipeId: Number,
     name: String,
@@ -51,6 +58,8 @@ export default {
             duration: this.duration ? this.duration : 30
         },
         shouldEdit: this.recipeId ? true : false,
+        errors: [],
+        alerts: [],
     };
   },
   methods: {
@@ -63,14 +72,22 @@ export default {
         }
     },
     store(userId) {
-        recipesApi.create(userId, this.data);
-        this.$emit('created');
-        this.data = {
-            name: null,
-            description: null,
-            recipe: null,
-            duration: 30
-        }
+        recipesApi.create(userId, this.data)
+        .then(() => {
+            this.$emit('created');
+            this.data = {
+                name: null,
+                description: null,
+                recipe: null,
+                duration: 30
+            }
+            this.errors = [];
+            this.alerts = ['Recipe added.'];
+        })
+        .catch((errors) => {
+            this.alerts = [];
+            this.errors = errors;
+        });
     },
     edit(userId) {
         recipesApi.update(userId, this.recipeId, this.data);

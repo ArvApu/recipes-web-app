@@ -36,7 +36,8 @@ const errorInterceptor = (error) => {
   switch (error.response.status) {
     case 401: // authentication error, logout the user
       sessionService.clearTokens();
-      router.push('/login');
+      sessionService.clearUser();
+      router.push('/');
       break;
     default:
       console.error(error.response.status, error.message);
