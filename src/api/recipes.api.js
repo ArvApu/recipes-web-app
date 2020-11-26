@@ -22,7 +22,12 @@ export default {
   },
 
   update(prId, id, payload) {
-    return api.patch(`/${parentResource}/${prId}/${resource}/${id}`, payload);
+    if(payload instanceof FormData) {
+      payload.append('_method', 'PATCH');
+    } else {
+      payload._method = 'PATCH';
+    }
+    return api.post(`/${parentResource}/${prId}/${resource}/${id}`, payload);
   },
 
   delete(prId, id){
