@@ -21,7 +21,7 @@
 
                 <div class='meta'>
                     <span> 
-                        <b>Author:</b> {{ this.recipe.author }} 
+                        <b>Author:</b> {{ this.recipe.author.username }} 
                     </span>
                     <span> 
                         <b>Duration:</b> {{ this.recipe.duration }} 
@@ -53,7 +53,7 @@
                 <div class="comment-meta">
                     <h3> {{comment.title}}</h3>
                     <span class='comment-information'> 
-                        <b> author: </b> {{comment.author}} <b> created: </b> {{formatDate(comment.created_at) }}
+                        <b> author: </b> {{comment.author.username}} <b> created: </b> {{formatDate(comment.created_at) }}
                     </span>
                 </div>
                 

@@ -71,7 +71,7 @@ export default {
     edit() {
         commentsApi.update(this.recipeUserId, this.recipeId, this.commentId, this.data)
         .then(() => {
-            this.$emit('created');
+            this.$emit('updated');
             this.onSuccess();
         })
         .catch((errors) => {
