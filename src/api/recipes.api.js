@@ -17,24 +17,12 @@ export default {
     return api.get(`/${parentResource}/${prId}/${resource}/${id}`);
   },
 
-  create(prId, payload) {
-    let config = {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      }
-    }
-       
-    return api.post(`/${parentResource}/${prId}/${resource}`, payload, config);
+  create(prId, payload) {      
+    return api.post(`/${parentResource}/${prId}/${resource}`, payload);
   },
 
   update(prId, id, payload) {
-    let config = {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      }
-    }
-
-    return api.patch(`/${parentResource}/${prId}/${resource}/${id}`, payload, config);
+    return api.patch(`/${parentResource}/${prId}/${resource}/${id}`, payload);
   },
 
   delete(prId, id){
