@@ -7,7 +7,7 @@
             </p>
 
             <p class='form-group'>
-                <label for="comment"> Description</label>
+                <label for="comment"> Comment</label>
                 <textarea class='form-input-textarea' id="comment" name="comment" v-model="data.comment" requried/>
             </p>
 

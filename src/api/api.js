@@ -47,7 +47,7 @@ const errorInterceptor = (error) => {
 
 /* Interceptor for responses - success */
 const responseInterceptor = (response) => {
-  return response; /* todo: => response.data; but chec every ocurance*/
+  return response;
 }
 
 api.interceptors.response.use(responseInterceptor, errorInterceptor);

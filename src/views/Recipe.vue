@@ -38,7 +38,7 @@
             </div>
          </div>
 
-        <div class='recipe-control' v-if="canControl()">
+        <div class='recipe-control' v-if="canControl(this.recipe)">
             <button class='btn btn-secondary' @click="showEdit()"> Edit </button>
             <button class='btn btn-danger' @click="showDelete()"> Delete </button>
         </div>
@@ -61,7 +61,7 @@
                     {{comment.comment}}
                 </div>
 
-                <div class='comment-control' v-if="canControl()">
+                <div class='comment-control' v-if="canControl(comment)">
                     <button class='btn btn-secondary' @click="showCommentEdit(comment)"> Edit </button>
                     <button class='btn btn-danger' @click="deleteComment(comment.id)"> Delete </button>
                 </div>
@@ -131,8 +131,8 @@ export default {
     };
   },
   methods: {
-    canControl() {
-        return this.$route.params.user_id == SessionService.getUser().id;
+    canControl(item) {
+        return item.user_id == SessionService.getUser().id;
     },
     formatDateTime(date) {
         return moment(date).format('YYYY-MM-DD HH:MM:SS')
@@ -141,6 +141,7 @@ export default {
         return moment(date).format('YYYY-MM-DD')
     },
     show () {
+        console.log(this.recipe.id, this.recipe.user_id);
         this.$modal.show('comment-creation-modal');
     },
     hide () {

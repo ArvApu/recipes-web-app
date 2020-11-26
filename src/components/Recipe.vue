@@ -29,6 +29,7 @@
 
 <script>
 import ApiFactory from '@/api/api.factory'
+import SessionService from '@/services/session.service.js'
 
 const recipesApi = ApiFactory.get('recipes');
 
@@ -54,7 +55,7 @@ export default {
   },
   methods: {
     handle() {
-        const userId = 1; // Todo dynamicly load it
+        const userId = SessionService.getUser().id;
         if(this.shouldEdit) {
             this.edit(userId);
         } else {
@@ -64,6 +65,12 @@ export default {
     store(userId) {
         recipesApi.create(userId, this.data);
         this.$emit('created');
+        this.data = {
+            name: null,
+            description: null,
+            recipe: null,
+            duration: 30
+        }
     },
     edit(userId) {
         recipesApi.update(userId, this.recipeId, this.data);
