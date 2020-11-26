@@ -88,7 +88,7 @@ export default {
         });
     },
     edit(userId) {
-        recipesApi.update(userId, this.recipeId, this.data)
+        recipesApi.update(userId, this.recipeId, this.getFormatedData())
         .then(() => {
             this.$emit('updated');
             this.onSuccess('Recipe updated.');
