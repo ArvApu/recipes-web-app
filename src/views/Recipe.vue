@@ -72,11 +72,11 @@
         <!-- MODALS -->
         <v-dialog />
 
-        <modal name="comment-creation-modal" :width=800 :adaptive=true>
+        <modal class="force-scroll-modal" name="comment-creation-modal" :width=800 :adaptive=true :scrollable=true>
             <Comment @created="loadComments(); hide();" :recipeId="this.recipe.id" :recipeUserId="this.recipe.user_id"/>
         </modal>
 
-        <modal name="recipe-edit-modal" :width=800 :height=500 :adaptive=true>
+        <modal class="force-scroll-modal" name="recipe-edit-modal" :width=800 :height=500 :adaptive=true :scrollable=true>
             <div class='recipe-edit'>
                 <RecipEdit @updated="hideEdit()"
                     :recipeId="this.recipe.id"
@@ -88,7 +88,7 @@
             </div>
         </modal>
 
-        <modal name="comment-edit-modal" :width=800 :adaptive=true>
+        <modal class="force-scroll-modal" name="comment-edit-modal" :width=800 :adaptive=true :scrollable=true>
             <div class='recipe-edit'>
                 <Comment @updated="hideCommentEdit()"
                     :title="this.currentComment.title"
@@ -141,7 +141,6 @@ export default {
         return moment(date).format('YYYY-MM-DD')
     },
     show () {
-        console.log(this.recipe.id, this.recipe.user_id);
         this.$modal.show('comment-creation-modal');
     },
     hide () {

@@ -75,23 +75,35 @@ export default {
         recipesApi.create(userId, this.data)
         .then(() => {
             this.$emit('created');
-            this.data = {
-                name: null,
-                description: null,
-                recipe: null,
-                duration: 30
-            }
-            this.errors = [];
-            this.alerts = ['Recipe added.'];
+            this.onSuccess('Recipe added.');
         })
         .catch((errors) => {
-            this.alerts = [];
-            this.errors = errors;
+            this.onError(errors);
         });
     },
     edit(userId) {
-        recipesApi.update(userId, this.recipeId, this.data);
-        this.$emit('updated');
+        recipesApi.update(userId, this.recipeId, this.data)
+        .then(() => {
+            this.$emit('updated');
+            this.onSuccess('Recipe updated.');
+        })
+        .catch((errors) => {
+            this.onError(errors);
+        });
+    },
+    onSuccess(alert) {
+        this.data = {
+            name: null,
+            description: null,
+            recipe: null,
+            duration: 30
+        }
+        this.errors = [];
+        this.alerts = [alert];
+    },
+    onError(errors) {
+        this.alerts = [];
+        this.errors = errors;
     }
   }
 }

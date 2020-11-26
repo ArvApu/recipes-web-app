@@ -569,10 +569,6 @@ body, #app{
 
 /* --------------- Alerts --------------- */
 
-.list-unstyled {
-
-}
-
 .alert {
     position: relative;
     padding: .75rem 1.25rem;
@@ -767,4 +763,20 @@ body, #app{
         width: 90%;
         height: auto;
     }
+}
+
+
+/* --------------- Other --------------- */
+
+.force-scroll-modal .vm--modal {
+    overflow-y: scroll !important;
+}
+
+.force-scroll-modal .vm--modal::-webkit-scrollbar {
+    display: none;
+}
+
+.force-scroll-modal .vm--modal {
+    -ms-overflow-style: none;  
+    scrollbar-width: none; 
 }
