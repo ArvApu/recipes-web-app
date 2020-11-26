@@ -18,11 +18,23 @@ export default {
   },
 
   create(prId, payload) {
-    return api.post(`/${parentResource}/${prId}/${resource}`, payload);
+    let config = {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      }
+    }
+       
+    return api.post(`/${parentResource}/${prId}/${resource}`, payload, config);
   },
 
   update(prId, id, payload) {
-    return api.patch(`/${parentResource}/${prId}/${resource}/${id}`, payload);
+    let config = {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      }
+    }
+
+    return api.patch(`/${parentResource}/${prId}/${resource}/${id}`, payload, config);
   },
 
   delete(prId, id){

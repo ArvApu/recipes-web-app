@@ -24,6 +24,11 @@
         </p>
 
         <p class='form-group'>
+            <label for="picture"> Picture </label>
+            <input type="file" id="picture" name="picture" ref="file" v-on:change="onChangeFileUpload()"/>        
+        </p>
+
+        <p class='form-group'>
             <input class='form-input btn btn-primary' type="submit" id="add-recipe" name="add-recipe" value="Submit" requried> 
         </p>
 
@@ -58,6 +63,7 @@ export default {
             duration: this.duration ? this.duration : 30
         },
         shouldEdit: this.recipeId ? true : false,
+        picture: null,
         errors: [],
         alerts: [],
     };
@@ -72,7 +78,7 @@ export default {
         }
     },
     store(userId) {
-        recipesApi.create(userId, this.data)
+        recipesApi.create(userId, this.getFormatedData())
         .then(() => {
             this.$emit('created');
             this.onSuccess('Recipe added.');
@@ -98,12 +104,30 @@ export default {
             recipe: null,
             duration: 30
         }
+        this.picture = null;
         this.errors = [];
         this.alerts = [alert];
     },
     onError(errors) {
         this.alerts = [];
         this.errors = errors;
+    },
+    onChangeFileUpload(){
+        this.picture = this.$refs.file.files[0];
+    },
+    getFormatedData() {
+        let formData = new FormData();
+        
+        for (var key in this.data) {
+            if(this.data[key] == null) {
+                continue;
+            }
+            formData.append(key, this.data[key]);
+        }
+
+        formData.append('picture', this.picture);
+
+        return formData;
     }
   }
 }

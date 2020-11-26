@@ -3,7 +3,7 @@
          
          <div class='recipe-data'>
             <div class="image-block">
-                <img class='image' src='https://ciao.lt/wp-content/uploads/2018/12/burger.jpeg' >
+                <img class='image' :src='recipe.picture' >
             </div>
 
             <div class="content-block">

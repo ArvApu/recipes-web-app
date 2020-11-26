@@ -3,7 +3,7 @@
       
         <div class="recipe" v-for="recipe in this.recipes" v-bind:key="recipe.id" @click="goToRecipe(recipe.user_id, recipe.id)"> 
         
-            <img class='image' src='https://ciao.lt/wp-content/uploads/2018/12/burger.jpeg' >
+            <img class='image' :src='recipe.picture' >
 
             <div class='information'> 
                 <span class='title'> {{ recipe.name }} </span>
