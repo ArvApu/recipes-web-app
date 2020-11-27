@@ -8,9 +8,9 @@
                 <span><b>Last login at:</b> {{ formatDateTime(user.last_login_at) }}</span>
             </div>
 
-            <div class='user-control'>
-                <button v-if="user.role_id === 'user'" class='btn btn-danger' @click="show()"> Delete </button>
-            </div>
+            <!-- <div class='user-control'>
+                <button v-if="user.role_id === 'user'" class='btn btn-danger' @click="show(user.id)"> Delete </button>
+            </div> -->
         </div>
 
         <v-dialog />
@@ -34,7 +34,7 @@ export default {
     formatDateTime(date) {
         return moment(date).format('YYYY-MM-DD HH:MM:SS')
     },
-    show () {
+    show (userId) {
         this.$modal.show('dialog', {
         title: 'WARNING',
         text: 'Are you sure you want to delete this user?',
@@ -42,7 +42,7 @@ export default {
             {
                 title: 'Do It',
                 handler: () => {
-                    alert('User deleted')
+                    usersApi.delete(userId)
                     this.$modal.hide('dialog');
                 }
 
