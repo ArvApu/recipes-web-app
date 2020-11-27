@@ -49,6 +49,7 @@ export default {
   },
   props: {
     recipeId: Number,
+    userId: Number,
     name: String,
     description: String,
     recipe: String,
@@ -70,7 +71,7 @@ export default {
   },
   methods: {
     handle() {
-        const userId = SessionService.getUser().id;
+        const userId = this.userId == null ? SessionService.getUser().id : this.userId;
         if(this.shouldEdit) {
             this.edit(userId);
         } else {
@@ -125,7 +126,9 @@ export default {
             formData.append(key, this.data[key]);
         }
 
-        formData.append('picture', this.picture);
+        if(this.picture != null) {
+          formData.append('picture', this.picture);
+        }
 
         return formData;
     }

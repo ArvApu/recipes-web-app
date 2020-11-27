@@ -76,10 +76,11 @@
             <Comment @created="loadComments(); hide();" :recipeId="this.recipe.id" :recipeUserId="this.recipe.user_id"/>
         </modal>
 
-        <modal class="force-scroll-modal" name="recipe-edit-modal" :width=800 :height=500 :adaptive=true :scrollable=true>
+        <modal class="force-scroll-modal" name="recipe-edit-modal" :width=800 :height=520 :adaptive=true :scrollable=true>
             <div class='recipe-edit'>
                 <RecipEdit @updated="hideEdit()"
                     :recipeId="this.recipe.id"
+                    :userId="this.recipe.user_id"
                     :name="this.recipe.name"
                     :description="this.recipe.description"
                     :recipe="this.recipe.recipe"
@@ -132,7 +133,7 @@ export default {
   },
   methods: {
     canControl(item) {
-        return item.user_id == SessionService.getUser().id;
+        return item.user_id == SessionService.getUser().id || SessionService.getUser().role_id === 'admin';
     },
     formatDateTime(date) {
         return moment(date).format('YYYY-MM-DD HH:MM:SS')
