@@ -452,7 +452,7 @@ body, #app{
     display: flex;
     flex-direction: column;
     width: 900px;
-    height: 350px;
+    min-height: 350px;
     margin-left: 30px;
 }
 
